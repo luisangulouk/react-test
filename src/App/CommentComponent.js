@@ -2,13 +2,17 @@ import React from 'react'
 import faker from 'faker';
 
 class CommentComponent extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = { message: ''};
-    }
+
+    state = { term: '', message: '' };
 
     componentDidMount() {
         this.setState({ message: 'some message' });
+    }
+
+    onFormSubmit = (e) => {
+        e.preventDefault();
+
+        this.props.onSubmit(this.state.term);
     }
 
     render() {
@@ -29,6 +33,15 @@ class CommentComponent extends React.Component {
                         </div>
                         <div className="actions">
                             <a href="/" className="reply">Reply</a>
+                        </div>
+                        <div className= "ui segment">
+                            <form onSubmit={this.onFormSubmit} className="ui form">
+                                <div className="field">
+                                    <input type="text"
+                                        value={this.state.term}
+                                        onChange={e => this.setState({ term: e.target.value })} />
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

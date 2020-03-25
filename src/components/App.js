@@ -1,7 +1,8 @@
 import React from 'react';
-import orderApi from '../Api/orderApi';
+import orderApi from '../api/orderApi';
 import CommentComponent from './CommentComponent';
 import AprovalComponent from './AprovalComponent';
+import OrderComponent from './OrderComponent';
 
 
 class App extends React.Component {
@@ -28,6 +29,7 @@ class App extends React.Component {
                 <AprovalComponent>
                     <CommentComponent onSubmit={this.onSearchSubmit} author="Luis" posttime="10:00 AM" body="some text for the comment"/>
                 </AprovalComponent>
+                <div><OrderComponent orders={this.state.orders} /></div>
             </div>
         );   
     }
